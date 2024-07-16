@@ -15,9 +15,7 @@ export default class MPTCoreRuntimePlugin implements EaCRuntimePlugin {
     const pluginConfig: EaCRuntimePluginConfig = {
       Name: 'MPTCoreRuntimePlugin',
       IoC: new IoCContainer(),
-      Plugins: [
-        new FathymAzureContainerCheckPlugin(),
-      ],
+      Plugins: [new FathymAzureContainerCheckPlugin()],
       EaC: {
         Projects: {
           mpt: {
@@ -34,6 +32,12 @@ export default class MPTCoreRuntimePlugin implements EaCRuntimePlugin {
               '127.0.0.1': {
                 Hostname: '127.0.0.1',
                 Port: config.Server.port || 8000,
+              },
+              'mpt-core-runtime.azurewebsites.net': {
+                Hostname: 'mpt-core-runtime.azurewebsites.net',
+              },
+              'www.massivelyparallel.com': {
+                Hostname: 'www.massivelyparallel.com',
               },
             },
             ModifierResolvers: {
