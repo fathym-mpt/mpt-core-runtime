@@ -10,6 +10,7 @@ env:
   ACR_REGISTRY: ${{ secrets.ACR_REGISTRY }}
   ACR_USERNAME: ${{ secrets.ACR_USERNAME }}
   ACR_PASSWORD: ${{ secrets.ACR_PASSWORD }}
+  AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
 
 jobs:
   build-and-push:
@@ -29,14 +30,14 @@ jobs:
       - name: 'Login via Azure CLI'
         uses: azure/login@v1
         with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          creds: ${{ env.AZURE_CREDENTIALS }}
       
       - name: Login to Azure Container Registry
         uses: azure/docker-login@v1
         with:
           login-server: ${{ env.ACR_REGISTRY }}
-          username: ${{ secrets.ACR_USERNAME }}
-          password: ${{ secrets.ACR_PASSWORD }}
+          username: ${{ env.ACR_USERNAME }}
+          password: ${{ env.ACR_PASSWORD }}
       
       - name: Build the Docker image
         uses: docker/build-push-action@v2
