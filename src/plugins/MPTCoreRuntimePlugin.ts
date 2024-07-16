@@ -65,9 +65,9 @@ export default class MPTCoreRuntimePlugin implements EaCRuntimePlugin {
         DFS: {
           '@fathym-mpt/v1-mpt-landing-page': {
             Type: 'NPM',
-            DefaultFile: 'index.html',
             Package: '@fathym-mpt/v1-mpt-landing-page',
             Version: 'latest',
+            DefaultFile: 'index.html',
           } as EaCNPMDistributedFileSystem,
         },
       },
